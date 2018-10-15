@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">assignmentTest</string>
-    <string name="log_in">LogIn Page</string>
+    <string name="log_in">SignIn Page</string>
     <string name="user_name">Username</string>
     <string name="password">Password</string>
     <string name="btn_logIn">Sign In</string>

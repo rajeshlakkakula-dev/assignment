@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
@@ -19,12 +18,20 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private final Context context;
 
 
+    /**
+     * @param context
+     * @param data
+     */
     public DataAdapter(Context context, List<List<String>> data) {
         this.context = context;
         list_names = data;
     }
 
-    @NonNull
+    /**
+     * @param viewGroup
+     * @param position
+     * @return
+     */
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int position) {
         Context context = viewGroup.getContext();
@@ -32,6 +39,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    /**
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 
@@ -60,6 +71,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public int getItemCount() {
         return list_names.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_names;

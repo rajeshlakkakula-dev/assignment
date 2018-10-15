@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param view
+     */
+
 
     public void signInButton(View view) {
 
@@ -70,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
             params.put("username", userName);
             params.put("password", password);
 
+
+            /**
+             * requesting the json data
+             */
             final JsonObjectRequest request_json = new JsonObjectRequest(URL, new JSONObject(params),
                     new Response.Listener<JSONObject>() {
                         @Override

@@ -5,27 +5,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.media.Image;
 import android.os.Build;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class DetailsPage extends AppCompatActivity {
+
+
     TextView name;
     TextView designation;
     TextView location;
@@ -42,6 +34,10 @@ public class DetailsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_page);
+
+        /**
+         * Initializing the views
+         */
         image = findViewById(R.id.image);
         name = findViewById(R.id.name);
         designation = findViewById(R.id.designation);
@@ -50,12 +46,17 @@ public class DetailsPage extends AppCompatActivity {
         date = findViewById(R.id.date);
         amount = findViewById(R.id.amount);
         image.setImageResource(R.drawable.camera_icon);
+
+        /**
+         * Parsing the Json data to views
+         */
         String list_name = getIntent().getExtras().getString("name");
         String list_designation = getIntent().getExtras().getString("designation");
         String list_location = getIntent().getExtras().getString("location");
         String list_number = getIntent().getExtras().getString("number");
         String list_date = getIntent().getExtras().getString("date");
         String list_amount = getIntent().getExtras().getString("amount");
+
         name.setText(list_name);
         designation.setText(list_designation);
         location.setText(list_location);
@@ -66,7 +67,13 @@ public class DetailsPage extends AppCompatActivity {
 
     }
 
-
+    /**
+     * On Click on Camera icon
+     * Checks the camera permissions and launch camera then
+     * sends the request back to imageView
+     *
+     * @param view
+     */
     public void cameraButton(View view) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -95,6 +102,13 @@ public class DetailsPage extends AppCompatActivity {
     }
 
 
+    /**
+     * Checking the Users Camera permission
+     *
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
